@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Form from './components/form';
+import WatchList from './components/watch-list';
 
 function App() {
+  const [watchList, setWatchList] = useState([])
+  const addWatch = (watch) => {
+    let indexData = watchList.findIndex(el => el.city === watch.city)
+    if (indexData !== -1) {
+      return
+    } else {
+      setWatchList(() => [...watchList, watch])
+    }
+  }
+  const deleteWatch = (city) => {
+    const newWatchList = watchList.filter(el => el.city !== city)
+    setWatchList(() => newWatchList)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form addWatch={addWatch}/>
+      <WatchList watchList={watchList} deleteWatch={deleteWatch}/>
     </div>
   );
 }

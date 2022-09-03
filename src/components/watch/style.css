@@ -1,0 +1,134 @@
+.clock {
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  background: #091921;
+  border-radius: 50%;
+}
+
+.clock__wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(https://user-images.githubusercontent.com/42720361/80282419-a293a400-8711-11ea-81c7-1c44e2980db2.png);
+  background-size: cover;
+  border: 16px solid #091921;
+  border-radius: 50%;
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+    0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+
+.clock__wrap:before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #091921;
+  border: 3px solid rgb(177, 174, 174);
+  border-radius: 50%;
+  z-index: 10000;
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+  position: absolute;
+}
+
+.clock .hour,
+.hr {
+  width: 95px;
+  height: 95px;
+}
+
+.clock .min,
+.mn {
+  width: 115px;
+  height: 115px;
+}
+
+.clock .sec,
+.sc {
+  width: 144px;
+  height: 144px;
+}
+
+.hr,
+.mn,
+.sc {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hr:before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 60px;
+  background: #ff105e;
+  z-index: 10;
+  border-radius: 6px 6px 0 0;
+}
+
+.mn:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 72px;
+  background: #fff;
+  z-index: 11;
+  border-radius: 6px 6px 0 0;
+}
+
+.sc:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 90px;
+  background: #ff105e;
+  z-index: 12;
+  border-radius: 6px 6px 0 0;
+}
+
+span {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 9%;
+  height: 4px;
+  z-index: 25px;
+  background: transparent;
+  transform-origin: left;
+  animation: animate 3s linear infinite;
+}
+
+span:after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 25px;
+  border-radius: 50%;
+  background: purple;
+  top: -6px;
+  right: -8px;
+  box-shadow: 0 0 20px blue;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
